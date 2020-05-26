@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import { useNavigation } from '@react-navigation/native';
 import {useDispatch} from 'react-redux'
-import {addDeck} from '../store/actions'
+import {handleAddDeck} from '../store/actions'
 import TextButton from '../component/TextButton'
 import TextInputStyled from '../component/TextInputStyled'
 
@@ -12,7 +12,7 @@ const AddDeck = () => {
     const dispatch = useDispatch()
     const submitDeck = () => {
         if(title.length > 0) {
-            dispatch(addDeck(title))
+            dispatch(handleAddDeck(title))
             setTitle('')
             navigation.navigate('Decks')
         }

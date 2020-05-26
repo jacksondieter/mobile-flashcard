@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import { useRoute, useNavigation } from '@react-navigation/native';
 import {useDispatch} from 'react-redux'
-import {addCard} from '../store/actions'
+import {handleAddCard} from '../store/actions'
 import TextButton from '../component/TextButton'
 import TextInputStyled from '../component/TextInputStyled'
 
@@ -15,7 +15,7 @@ const AddCard = () => {
     const submitCard =  () => {
         if(question.length > 0 && answer.length > 0) {
             const card = {question,answer}
-            dispatch(addCard(deckId,card))
+            dispatch(handleAddCard(deckId,card))
             navigation.navigate('Deck',{deckId})
         }
     }

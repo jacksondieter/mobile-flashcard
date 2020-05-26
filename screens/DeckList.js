@@ -3,7 +3,7 @@ import { StyleSheet, View } from 'react-native'
 import {useSelector,useDispatch} from 'react-redux'
 import DeckButton from '../component/DeckButton'
 import { useNavigation } from '@react-navigation/native';
-import {handleGetDecks, removeDeck} from '../store/actions'
+import {handleGetDecks, handleRemoveDeck} from '../store/actions'
 
 const DeckList = () => {
     const navigation = useNavigation();
@@ -20,11 +20,11 @@ const DeckList = () => {
         <View>
             {decks && decks.map( ( deck ) => 
             (<DeckButton 
-                title={deck.title} 
-                key={deck.title} 
-                cards={deck.cards} 
+                title={deck.title}
+                key={deck.title}
+                cards={deck.cards}
                 onShow={() => navigation.navigate('Deck',{id:deck.title})}
-                onDelete={() => dispatch(removeDeck(deck.title))}
+                onDelete={() => dispatch(handleRemoveDeck(deck.title))}
             />))}
         </View>
     )
