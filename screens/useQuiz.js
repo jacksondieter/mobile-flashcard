@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useRoute, useNavigation } from '@react-navigation/native';
 import {useSelector} from 'react-redux'
+import { setNextNotification } from '../utils/notification'
 
 export default function useQuiz() {
     const navigation = useNavigation();
@@ -25,15 +26,23 @@ export default function useQuiz() {
     const setResponse = (res) => {
         res && setCorrectCount(correctCount => ++correctCount);
         setIndexQuestion(indexQuestion => ++indexQuestion);
-        (indexQuestion >= quiz.length-1) && setShowResult(true)
+        setShowQuestion(true);
+        (indexQuestion >= quiz.length-1) && setShowResult(true) && setNextNotification()
     }
 
     const respondCorrect = () => setResponse(true)
     const respondIncorrect = () => setResponse(false)
 
+    const restartQuiz = () => {
+        setIndexQuestion(0)
+        setCorrectCount(0)
+        setShowResult(false)
+    }
+
     const quitQuiz = () => {
         navigation.navigate('Deck',{id})
     }
+
     return {
         showResult,
         correctCount,
@@ -43,6 +52,7 @@ export default function useQuiz() {
         toggleStatus,
         respondCorrect,
         respondIncorrect,
+        restartQuiz,
         quitQuiz
     }
 }

@@ -24,7 +24,7 @@ const AddDeck = () => {
             onChangeText={text=>setTitle(text)}
             value={title}
             />
-            <TextButton onPress={submitDeck}>Submit</TextButton>
+            <TextButton onPress={submitDeck}>Create Deck</TextButton>
         </View>
     )
 }

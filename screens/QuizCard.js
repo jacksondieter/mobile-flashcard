@@ -13,6 +13,7 @@ const QuizCard = () => {
         toggleStatus,
         respondCorrect,
         respondIncorrect,
+        restartQuiz,
         quitQuiz
     }= useQuiz()
 
@@ -22,7 +23,8 @@ const QuizCard = () => {
             ?(  <View>
                     <Text>{`Correct: ${correctCount}`}</Text>
                     <Text>{`Incorrect: ${getIncorrectCount()}`}</Text>
-                    <TextButton onPress={quitQuiz}>Close</TextButton>
+                    <TextButton onPress={restartQuiz}>Restart Quiz</TextButton>
+                    <TextButton onPress={quitQuiz}>Back to Deck</TextButton>
                 </View>
             )
             :(
