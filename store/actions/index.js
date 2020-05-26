@@ -10,7 +10,7 @@ export const ADD_DECK = 'ADD_DECK'
 export const REMOVE_DECK = 'REMOVE_DECK'
 export const ADD_CARD = 'ADD_CARD'
 
-export function getDecks(decks) {
+export function receiveDecks(decks) {
     return {
         type:RECEIVE_DECKS,
         decks
@@ -43,7 +43,7 @@ export function handleGetDecks() {
     return dispatch => {
         return fetchDecks()
                 .then(decks => {
-                    dispatch(getDecks(decks))
+                    dispatch(receiveDecks(decks))
                 })
     }
 }
