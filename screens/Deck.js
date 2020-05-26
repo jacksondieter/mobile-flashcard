@@ -1,23 +1,24 @@
 import React from 'react'
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, View } from 'react-native'
 import { useRoute, useNavigation } from '@react-navigation/native';
+import {useSelector} from 'react-redux'
 import TextButton from '../component/TextButton';
 
 const Deck = () => {
-    const route = useRoute();
-   const navigation = useNavigation();
-    const { id } = route.params;
+    const { id } = useRoute().params;
+    const navigation = useNavigation();
+    const cardsLength = useSelector(state => state[id].questions.length)
     const handleAddCard = () => {
-        navigation.navigate('AddCard')
+        navigation.navigate('AddCard',{deckId:id})
     }
 
     const handleStartQuiz = () => {
-        navigation.navigate('QuizCard')
+        navigation.navigate('QuizCard',{id})
     }
     return (
         <View>
             <Text>{id}</Text>
-            <Text>3 cards</Text>
+            <Text>{cardsLength} cards</Text>
             <TextButton onPress={handleAddCard}>Add Card</TextButton>
             <TextButton onPress={handleStartQuiz}>Start Quiz</TextButton>
         </View>

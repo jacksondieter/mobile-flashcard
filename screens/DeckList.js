@@ -1,13 +1,31 @@
-import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import React,{useEffect, useCallback} from 'react'
+import { StyleSheet, View } from 'react-native'
+import {useSelector,useDispatch} from 'react-redux'
 import DeckButton from '../component/DeckButton'
 import { useNavigation } from '@react-navigation/native';
+import {handleGetDecks, removeDeck} from '../store/actions'
 
 const DeckList = () => {
     const navigation = useNavigation();
+    const decks = useSelector(state => Object.values(state).map(deck => ({title:deck.title,cards:deck.questions.length})))
+
+    const dispatch = useDispatch()
+    const stableDispatch = useCallback(dispatch,[])
+
+    useEffect(() => {
+        stableDispatch(handleGetDecks());
+    }, [stableDispatch])
+
     return (
         <View>
-            <DeckButton name={'Deck 1'} cards={3} key={'deck1'} onPress={() => navigation.navigate('Deck',{id:'deck1'})}/>
+            {decks && decks.map( ( deck ) => 
+            (<DeckButton 
+                title={deck.title} 
+                key={deck.title} 
+                cards={deck.cards} 
+                onShow={() => navigation.navigate('Deck',{id:deck.title})}
+                onDelete={() => dispatch(removeDeck(deck.title))}
+            />))}
         </View>
     )
 }

@@ -1,19 +1,28 @@
 import React, {useState} from 'react'
-import { StyleSheet, Text, View , TextInput} from 'react-native'
+import { StyleSheet, Text, View } from 'react-native'
+import { useNavigation } from '@react-navigation/native';
+import {useDispatch} from 'react-redux'
+import {addDeck} from '../store/actions'
 import TextButton from '../component/TextButton'
 import TextInputStyled from '../component/TextInputStyled'
 
 const AddDeck = () => {
-    const [deck, setDeck] = useState('')
-    const submitDeck = (params) => {
-        return
+    const navigation = useNavigation();
+    const [title, setTitle] = useState('')
+    const dispatch = useDispatch()
+    const submitDeck = () => {
+        if(title.length > 0) {
+            dispatch(addDeck(title))
+            setTitle('')
+            navigation.navigate('Decks')
+        }
     }
     return (
         <View>
             <Text style={styles.reset}>Deck name</Text>
             <TextInputStyled
-            onChangeText={text=>setDeck(text)}
-            value={deck}
+            onChangeText={text=>setTitle(text)}
+            value={title}
             />
             <TextButton onPress={submitDeck}>Submit</TextButton>
         </View>
