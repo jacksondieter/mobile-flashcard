@@ -2,6 +2,7 @@
 * [Descriptions](#description)
 * [Getting started](#getting-started)
 * [Build width](#build-width)
+* [Tested in](#tested-in)
 * [Contributing](#contributing)
 * [Authors](#authors)
 
@@ -27,6 +28,9 @@ To run the app with live reloading, choose one of:
 This project was created with 
 - [EXPO](https://expo.io/)
 - [REACT NATIVE](https://reactnative.dev/)
+
+### Tested in
+This project have been tested in Android OS
 
 ### Contributing
 Therefore, we most likely will not accept pull requests.
