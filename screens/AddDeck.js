@@ -18,13 +18,12 @@ const AddDeck = () => {
         }
     }
     return (
-        <View>
-            <Text style={styles.reset}>Deck name</Text>
+        <View style={styles.container}>
             <TextInputStyled
             onChangeText={text=>setTitle(text)}
             value={title}
             />
-            <TextButton onPress={submitDeck}>Create Deck</TextButton>
+            <TextButton onPress={submitDeck} style={styles.buttonStyle}>Create Deck</TextButton>
         </View>
     )
 }
@@ -32,7 +31,12 @@ const AddDeck = () => {
 export default AddDeck
 
 const styles = StyleSheet.create({
-    reset: {
-        textAlign: 'center'
+    container:{
+        flex:1,
+        alignItems:'center',
+        justifyContent:'space-evenly'
+    },
+    buttonStyle:{
+        backgroundColor:'lightskyblue'
     }
 })

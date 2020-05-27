@@ -15,7 +15,7 @@ const DeckNavigator = () => {
                 tabStyle:{height:50}
             }}>
                 <Tab.Screen name="Decks" component={DeckList} />
-                <Tab.Screen name="AddDeck" component={AddDeck} />
+                <Tab.Screen name="AddDeck" component={AddDeck} options={{title: 'Add Deck'}} />
             </Tab.Navigator>
     )
 }

@@ -20,19 +20,22 @@ const AddCard = () => {
         }
     }
     return (
-        <View>
-            <Text>{`Deck: ${deckId}`}</Text>
-            <Text style={styles.reset}>Question</Text>
-            <TextInputStyled
-            onChangeText={text=>setQuestion(text)}
-            value={question}
-            />
-            <Text style={styles.reset}>Answer</Text>
-            <TextInputStyled
-            onChangeText={text=>setAnswer(text)}
-            value={answer}
-            />
-            <TextButton onPress={submitCard}>Submit</TextButton>
+        <View style={styles.container}>
+            <View style={styles.box}>
+                <Text >Question</Text>
+                <TextInputStyled
+                onChangeText={text=>setQuestion(text)}
+                value={question}
+                />
+            </View>
+            <View style={styles.box}>
+                <Text>Answer</Text>
+                <TextInputStyled
+                onChangeText={text=>setAnswer(text)}
+                value={answer}
+                />
+            </View>
+            <TextButton onPress={submitCard} style={styles.buttonStyle}>Submit</TextButton>
         </View>
     )
 }
@@ -40,7 +43,12 @@ const AddCard = () => {
 export default AddCard
 
 const styles = StyleSheet.create({
-    reset: {
-        textAlign: 'center'
+    container:{
+        flex:1,
+        alignItems:'center',
+        justifyContent:'space-evenly'
+    },
+    buttonStyle:{
+        backgroundColor:'lightskyblue'
     }
 })

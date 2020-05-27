@@ -13,18 +13,45 @@ const Deck = () => {
     }
 
     const handleStartQuiz = () => {
-        navigation.navigate('QuizCard',{id})
+        cardsLength && navigation.navigate('QuizCard',{id})
     }
     return (
-        <View>
-            <Text>{id}</Text>
-            <Text>{cardsLength} cards</Text>
-            <TextButton onPress={handleAddCard}>Add Card</TextButton>
-            <TextButton onPress={handleStartQuiz}>Start Quiz</TextButton>
+        <View style={styles.container}>
+            <View style={styles.box}>
+                <Text style={styles.bigText}>{id}</Text>
+                <Text style={styles.mediumText}>{cardsLength} cards</Text>
+            </View>
+            <View style={styles.box}>
+                <TextButton onPress={handleAddCard} style={styles.buttonStyle}>Add Card</TextButton>
+                {cardsLength? (<TextButton onPress={handleStartQuiz} style={styles.buttonStyle}>Start Quiz</TextButton>):null}
+            </View>
         </View>
     )
 }
 
 export default Deck
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+    container:{
+        flex:1,
+        alignItems:'center',
+        justifyContent:'space-evenly'
+    },
+    box:{
+        padding:20
+    },
+    buttonStyle:{
+        backgroundColor:'lightskyblue'
+    },
+    bigText: {
+        fontWeight: 'bold',
+        fontSize: 30,
+        margin:10,
+        textAlign:'center'
+    },
+    mediumText: {
+        fontSize: 20,
+        margin:10,
+        textAlign:'center'
+    }
+})

@@ -1,14 +1,18 @@
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View,TouchableOpacity } from 'react-native'
 import TextButton from './TextButton'
 
 const DeckButton = ({title, cards, onShow, onDelete}) => {
     return (
-        <View>
-            <TextButton onPress={onShow}>
-                <Text style={styles.reset}>{title}</Text>
-                <Text style={styles.reset}>{cards} cards</Text>
-            </TextButton>
+        <View style={styles.container}>
+                <TouchableOpacity onPress={onShow} style={styles.box}>
+                    <View>
+                        <Text style={styles.mediumText}>{title}</Text>
+                    </View>
+                    <View>
+                        <Text>{cards} cards</Text>
+                    </View>
+                </TouchableOpacity>
             <TextButton onPress={onDelete}>
                 <Text>X</Text>
             </TextButton>
@@ -19,10 +23,23 @@ const DeckButton = ({title, cards, onShow, onDelete}) => {
 export default DeckButton
 
 const styles = StyleSheet.create({
-    reset:{
-        margin:20
-    },
     container:{
-        flexDirection:"column"
+        flexDirection:"row",
+        alignItems:'center',
+        justifyContent:'space-around',
+        borderColor:'#fff',
+        borderStyle:"solid",
+        borderWidth:1,
+        padding:10,
+    },
+    box:{
+        flexDirection:'column',
+        alignItems:'center',
+        justifyContent:'space-evenly'
+    },
+    mediumText: {
+        fontSize: 20,
+        margin:10,
+        textAlign:'center'
     }
 })

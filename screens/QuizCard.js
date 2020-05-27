@@ -20,19 +20,27 @@ const QuizCard = () => {
     return (
         <View>
             {showResult
-            ?(  <View>
-                    <Text>{`Correct: ${correctCount}`}</Text>
-                    <Text>{`Incorrect: ${getIncorrectCount()}`}</Text>
-                    <TextButton onPress={restartQuiz}>Restart Quiz</TextButton>
-                    <TextButton onPress={quitQuiz}>Back to Deck</TextButton>
+            ?(  <View style={styles.container}>
+                    <View style={styles.box}>
+                        <Text style={[styles.green,styles.bigText]}>{`Correct: ${correctCount}`}</Text>
+                        <Text style={[styles.red,styles.bigText]}>{`Incorrect: ${getIncorrectCount()}`}</Text>
+                    </View>
+                    <View style={styles.box}>
+                    <TextButton onPress={restartQuiz} style={styles.buttonStyle}>Restart Quiz</TextButton>
+                    <TextButton onPress={quitQuiz} style={styles.buttonStyle}>Back to Deck</TextButton>
+                    </View>
                 </View>
             )
             :(
-                <View>
-                    <Text>{getText()}</Text>
-                    <TextButton onPress={toggleStatus}>{getButton()}</TextButton>
-                    <TextButton onPress={respondCorrect}>Correct</TextButton>
-                    <TextButton onPress={respondIncorrect}>Incorrect</TextButton>
+                <View style={styles.container}>
+                    <View style={styles.box}>
+                        <Text style={styles.bigText}>{getText()}</Text>
+                    </View>
+                    <View style={styles.box}>
+                        <TextButton onPress={toggleStatus} styleChild={styles.red}>{getButton()}</TextButton>
+                        <TextButton onPress={respondCorrect} style={styles.greenStyle}>Correct</TextButton>
+                        <TextButton onPress={respondIncorrect} style={styles.redStyle}>Incorrect</TextButton>
+                    </View>
                 </View>
             )
             }
@@ -42,4 +50,34 @@ const QuizCard = () => {
 
 export default QuizCard
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+    container:{
+        alignItems:'center',
+        justifyContent:'center'
+    },
+    box:{
+        padding:20
+    },
+    buttonStyle:{
+        backgroundColor:'lightskyblue'
+    }
+    ,
+    redStyle:{
+        backgroundColor:'tomato'
+    }
+    ,
+    greenStyle:{
+        backgroundColor:'palegreen'
+    },
+    bigText: {
+        fontWeight: 'bold',
+        fontSize: 30,
+        margin:10
+    },
+    red: {
+        color: 'red',
+    },
+    green: {
+        color: 'green',
+    }
+})

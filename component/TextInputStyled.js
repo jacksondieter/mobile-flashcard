@@ -18,6 +18,8 @@ const styles = StyleSheet.create({
             width: 200,
             borderColor: 'gray',
             borderWidth: 1,
-            margin:20
+            margin:20,
+            textAlign: 'center',
+            borderRadius:5
         }
 })

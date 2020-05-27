@@ -19,9 +19,9 @@ const StackNavigator = () => {
                                 }
                             }}>
                 <Stack.Screen name="Home" component={DeckNavigator} options={{headerShown: false}}/>
-                <Stack.Screen name="Deck" component={Deck} />
-                <Stack.Screen name="AddCard" component={AddCard} />
-                <Stack.Screen name="QuizCard" component={QuizCard} options={{headerLeft:null}}/>
+                <Stack.Screen name="Deck" component={Deck} options={({ route }) => ({ title: route.params.id })} />
+                <Stack.Screen name="AddCard" component={AddCard} options={({ route }) => ({ title: `${route.params.deckId}: Add Card` })} />
+                <Stack.Screen name="QuizCard" component={QuizCard} options={({ route }) => ({ title: `${route.params.id}: Quiz`, headerLeft:null })}/>
             </Stack.Navigator>
         </NavigationContainer>
     )
