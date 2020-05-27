@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "flashcard",
-    "slug": "flashcard",
+    "name": "Mobile flashcard",
+    "slug": "Mobile flashcard",
     "platforms": [
       "ios",
       "android",
