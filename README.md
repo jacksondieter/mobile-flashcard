@@ -11,8 +11,8 @@ This is a mobile application that allows users to study collections of flashcard
 
 
 ### Getting started
-Open the terminal and run following command:
-### `cd would-you-rather-app`
+Open the terminal, clone/download this repository and run following command:
+### `cd mobile-flashcard`
 ### `yarn install`
 ### `yarn start`
 
