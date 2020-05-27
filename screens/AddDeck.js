@@ -15,6 +15,7 @@ const AddDeck = () => {
             dispatch(handleAddDeck(title))
             setTitle('')
             navigation.navigate('Decks')
+            navigation.push('Deck',{id:title})
         }
     }
     return (

@@ -50,9 +50,10 @@ export function handleGetDecks() {
 
 export function handleAddDeck(title) {
     return dispatch => {
+        dispatch(addDeck(title))
         return saveDeck(title)
-                .then(() => {
-                    dispatch(addDeck(title))
+                .catch((e) => {
+                    console.log('Error saving decks: ',e);
                 })
     }
 }
