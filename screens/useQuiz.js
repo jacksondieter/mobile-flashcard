@@ -23,6 +23,7 @@ export default function useQuiz() {
                                     ?'Show answer'
                                     :'Show question'
     const getIncorrectCount = () => indexQuestion-correctCount
+    const getProgress = () => `${indexQuestion+1}/${quiz.length}`
     const setResponse = (res) => {
         res && setCorrectCount(correctCount => ++correctCount);
         setIndexQuestion(indexQuestion => ++indexQuestion);
@@ -49,6 +50,7 @@ export default function useQuiz() {
         getIncorrectCount,
         getText,
         getButton,
+        getProgress,
         toggleStatus,
         respondCorrect,
         respondIncorrect,

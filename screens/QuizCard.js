@@ -10,6 +10,7 @@ const QuizCard = () => {
         getIncorrectCount,
         getText,
         getButton,
+        getProgress,
         toggleStatus,
         respondCorrect,
         respondIncorrect,
@@ -33,6 +34,9 @@ const QuizCard = () => {
             )
             :(
                 <View style={styles.container}>
+                    <View style={styles.box}>
+                        <Text>{getProgress()}</Text>
+                    </View>
                     <View style={styles.box}>
                         <Text style={styles.bigText}>{getText()}</Text>
                     </View>
