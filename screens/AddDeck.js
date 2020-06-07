@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, View } from 'react-native'
 import { useNavigation } from '@react-navigation/native';
 import {useDispatch} from 'react-redux'
 import {handleAddDeck} from '../store/actions'

@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View, KeyboardAvoidingView } from 'react-native'
 import { useRoute, useNavigation } from '@react-navigation/native';
 import {useDispatch} from 'react-redux'
 import {handleAddCard} from '../store/actions'
@@ -20,7 +20,10 @@ const AddCard = () => {
         }
     }
     return (
-        <View style={styles.container}>
+        <KeyboardAvoidingView 
+        behavior={Platform.OS == "ios" ? "padding" : "height"}
+        style={styles.container}
+        >
             <View style={styles.box}>
                 <Text >Question</Text>
                 <TextInputStyled
@@ -36,7 +39,7 @@ const AddCard = () => {
                 />
             </View>
             <TextButton onPress={submitCard} style={styles.buttonStyle}>Submit</TextButton>
-        </View>
+        </KeyboardAvoidingView>
     )
 }
 
